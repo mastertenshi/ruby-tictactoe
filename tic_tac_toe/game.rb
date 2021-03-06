@@ -16,7 +16,7 @@ module TicTacToe
         @board.set_cell(position, player.sign)
         @taken_positions.push(position)
 
-        game_win(player) if turns_count > 4 && win?(position, player.sign)
+        game_won(player.name) if turns_count > 4 && win?(position, player.sign)
 
         player = (player == @player1) ? @player2 : @player1
       end
@@ -32,9 +32,9 @@ module TicTacToe
       play_again
     end
 
-    def game_win(player)
+    def game_won(name)
       @board.draw
-      puts "Congratz #{player.name} wins!!!"
+      puts "Congratz #{name} wins!!!"
       play_again
     end
 
