@@ -48,6 +48,7 @@ module TicTacToe
 
     def exit?(input)
       return true if %w[exit quit].include?(input.downcase)
+
       false
     end
 
@@ -72,19 +73,19 @@ module TicTacToe
     end
 
     def win?(player)
-      pos = player.position
+      position = player.position
       sign = player.sign
 
-      return true if @board.get_column(pos).all?(sign) ||
-                     @board.get_row(pos).all?(sign) ||
-      if pos.odd?
-        if [1, 9].include?(pos)
-          @board.diagonal('ltr').all?(sign)
-        else
+      return true if
+        @board.get_column(position).all?(sign) ||
+        @board.get_row(position).all?(sign) ||
+
+        if position.odd?
+          @board.diagonal('ltr').all?(sign) ||
           @board.diagonal('rtl').all?(sign)
         end
-      end
+
       false
     end
   end
-en
+end
