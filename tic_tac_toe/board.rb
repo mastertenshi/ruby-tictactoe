@@ -6,14 +6,16 @@ module TicTacToe
     end
 
     def draw
-      Gem.win_platform? ? (system 'cls') : (system 'clear')
+      Display.clear
       puts "Enter 'exit' or 'quit' to leave the game."
-      puts "\v"
+      Display.v_tab
+
       @grid.each_with_index do |row, index|
         puts "\t#{format_row(row)}"
         puts "\t---+---+---" unless index == 2
       end
-      puts "\v"
+
+      Display.v_tab
     end
 
     def set_cell(player)  # rubocop:disable Naming/AccessorMethodName

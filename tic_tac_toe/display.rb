@@ -16,5 +16,13 @@ module TicTacToe
       puts "#{player.name}'s turn (#{sign})"
       print "\nEnter position number: "
     end
+
+    def self.clear
+      Gem.win_platform? ? (system 'cls') : (system 'clear')
+    end
+
+    def self.v_tab
+      Gem.win_platform? ? (2.times do puts ''; end) : (puts "\v")
+    end
   end
 end

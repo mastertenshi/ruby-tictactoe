@@ -50,16 +50,21 @@ module TicTacToe
       exit
     end
 
+    def exit?(input)
+      return true if %w[exit quit].include?(input.downcase)
+      false
+    end
+
     def prompt_position(player = Player.new)
       @board.draw
       Display.player_turn(player)
 
       # Until we get a valid position number
       loop do
-        pos = gets.chomp
-        exit if %w[exit quit].include?(pos.downcase)
+        input = gets.chomp
+        exit if exit?(input)
 
-        pos = pos.to_i
+        pos = input.to_i
         if pos.between?(1, 9)
           return pos unless @taken_positions.include?(pos)
 
