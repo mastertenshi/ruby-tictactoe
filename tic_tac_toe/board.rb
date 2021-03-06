@@ -6,7 +6,7 @@ module TicTacToe
     end
 
     def draw
-      system 'clear'
+      Gem.win_platform? ? (system 'cls') : (system 'clear')
       puts "Enter 'exit' or 'quit' to leave the game."
       puts "\v"
       @grid.each_with_index do |row, index|
