@@ -6,7 +6,6 @@ module TicTacToe
     def initialize(name = 'P1', sign = 'N')
       @name = name
       @sign = sign
-      @position = 0
     end
   end
 end

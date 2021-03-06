@@ -11,12 +11,12 @@ module TicTacToe
       player = @player1
 
       (1..9).each do |turns_count|
-        player.position = prompt_position(player)
+        position = prompt_position(player)
 
-        @board.set_cell(player)
-        @taken_positions.push(player.position)
+        @board.set_cell(position, player.sign)
+        @taken_positions.push(position)
 
-        game_win(player) if turns_count > 4 && win?(player)
+        game_win(player) if turns_count > 4 && win?(position, player.sign)
 
         player = (player == @player1) ? @player2 : @player1
       end
@@ -47,35 +47,35 @@ module TicTacToe
     end
 
     def exit?(input)
-      return true if %w[exit quit].include?(input.downcase)
-
-      false
+      exit if %w[exit quit].include?(input.downcase)
     end
 
     def prompt_position(player = Player.new)
       @board.draw
       Display.player_turn(player)
 
-      # Until we get a valid position number
       loop do
         input = gets.chomp
-        exit if exit?(input)
+        exit?(input)
 
-        pos = input.to_i
-        if pos.between?(1, 9)
-          return pos unless @taken_positions.include?(pos)
-
-          Display.position_taken
-        else
-          Display.invalid_number
-        end
+        position = input.to_i
+        return position if position_valid?(position)
       end
     end
 
-    def win?(player)
-      position = player.position
-      sign = player.sign
+    def position_valid?(position)
+      if position.between?(1, 9)
+        return true unless @taken_positions.include?(position)
 
+        Display.position_taken
+      else
+        Display.invalid_number
+      end
+
+      false
+    end
+
+    def win?(position, sign)
       return true if
         @board.get_column(position).all?(sign) ||
         @board.get_row(position).all?(sign) ||

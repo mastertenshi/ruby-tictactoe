@@ -18,9 +18,9 @@ module TicTacToe
       Display.v_tab
     end
 
-    def set_cell(player)  # rubocop:disable Naming/AccessorMethodName
-      n = player.position - 1
-      @grid[n / 3][n % 3] = player.sign
+    def set_cell(position, sign)  # rubocop:disable Naming/AccessorMethodName
+      n = position - 1
+      @grid[n / 3][n % 3] = sign
     end
 
     def get_row(position)
