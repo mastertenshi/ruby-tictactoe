@@ -1,4 +1,4 @@
-# Console Tic-Tac-Toe (Ruby)
+# Console Tic-Tac-Toe
 
 ### Terminal/Console
 
