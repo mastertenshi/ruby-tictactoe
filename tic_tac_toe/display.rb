@@ -5,7 +5,7 @@ module TicTacToe
       print 'Try another position [1-9]: '
     end
 
-    def self.not_a_number
+    def self.invalid_number
       print "#{'Error! '.red} Enter number between [1-9]: "
     end
 

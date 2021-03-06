@@ -28,17 +28,13 @@ module TicTacToe
 
     def game_tie
       @board.draw
-
       puts "It's a tie!"
-
       play_again
     end
 
     def game_win(player)
       @board.draw
-
       puts "Congratz #{player.name} wins!!!"
-
       play_again
     end
 
@@ -70,7 +66,7 @@ module TicTacToe
 
           Display.position_taken
         else
-          Display.not_a_number
+          Display.invalid_number
         end
       end
     end
@@ -79,17 +75,16 @@ module TicTacToe
       pos = player.position
       sign = player.sign
 
-      return true if @board.get_column(pos).all?(sign)
-      return true if @board.get_row(pos).all?(sign)
-
+      return true if @board.get_column(pos).all?(sign) ||
+                     @board.get_row(pos).all?(sign) ||
       if pos.odd?
         if [1, 9].include?(pos)
-          return true if @board.diagonal('ltr').all?(sign)
+          @board.diagonal('ltr').all?(sign)
         else
-          return true if @board.diagonal('rtl').all?(sign)
+          @board.diagonal('rtl').all?(sign)
         end
       end
       false
     end
   end
-end
+en
