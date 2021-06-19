@@ -1,5 +1,8 @@
 # Console Tic-Tac-Toe
 
+### [Live Preview](https://replit.com/@mastertenshi/ruby-tictactoe)
+##
+
 ### Terminal/Console
 
 Run **play.rb** to start the game.
